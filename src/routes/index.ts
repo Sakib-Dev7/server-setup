@@ -2,7 +2,6 @@ import express from 'express';
 import authRouter from '../modules/auth/auth.routes';
 import userRoutes from '../modules/user/user.routes';
 
-
 const Routes = express.Router();
 // Array of module routes
 const moduleRouts = [

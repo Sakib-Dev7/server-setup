@@ -1,8 +1,8 @@
 import { ErrorRequestHandler } from 'express';
 import { ZodError } from 'zod';
 import reformZodError from '../error/zoodError';
-import mongoseErrorHandeller from '../error/mongooseErrorHandeller';
-import dublicateErrorHandellerr from '../error/dublicateError';
+import mongoseErrorHandeller from '../error/mongooseErrorHandler';
+import dublicateErrorHandellerr from '../error/duplicateError';
 import { TErrorSource } from '../constents';
 
 const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
@@ -47,7 +47,7 @@ const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
     success: false,
     message: message,
     errorSource,
-    theError:err.stack,
+    theError: err.stack,
     // stack: config.nodeEnv === 'development' ? err.stack : null,
   });
 };

@@ -1,7 +1,6 @@
 import nodemailer from 'nodemailer';
 import config from '../config';
 
-
 export const sendEmail = async (to: string, subject: string, html: string) => {
   try {
     const transporter = nodemailer.createTransport({
@@ -9,16 +8,16 @@ export const sendEmail = async (to: string, subject: string, html: string) => {
       port: 587,
       secure: false, // true for port 465, false for other ports
       auth: {
-        user: `${config.companyGmail}`,
-        pass: `${config.GmailAppPassword}`,
+        user: `${config.company_gmail}`,
+        pass: `${config.gmail_app_password}`,
       },
     });
 
     const info = await transporter.sendMail({
-      from: `${config.companyGmail}`,
+      from: `${config.company_gmail}`,
       to,
       subject,
-      text: 'This E-mail is from FIT FLEX',
+      text: 'This E-mail is from APP NAME',
       html,
     });
 

@@ -1,7 +1,7 @@
 import mongoose, { ClientSession, Types } from 'mongoose';
 import { TProfile, TUser } from './user.interface';
 import { ProfileModel, UserModel } from './user.model';
-import { uploadImgToCloudinary } from '../../util/uploadImgToCludinary';
+import { uploadImgToCloudinary } from '../../util/uploadImgToCloudinary';
 
 
 
@@ -207,7 +207,8 @@ const getProfile = async (user_id: Types.ObjectId) => {
 
 
 const userServices = {
-  createUser,getAllUsers,
+  createUser,
+  getAllUsers,
   updateProfileData,
   deleteSingleUser,
   selfDistuct,

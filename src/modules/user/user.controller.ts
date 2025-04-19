@@ -1,6 +1,6 @@
 import { Types } from 'mongoose';
 import catchAsync from '../../util/catchAsync';
-import golbalRespnseHandler from '../../util/globalResponseHandeler';
+import sendResponse from '../../util/sendResponse';
 import idConverter from '../../util/idConvirter';
 import userServices from './user.service';
 
@@ -15,7 +15,7 @@ const createUser = catchAsync(async (req, res) => {
 
 const getAllUsers = catchAsync(async (req, res) => {
   const result = await userServices.getAllUsers();
-  golbalRespnseHandler(res, {
+  sendResponse(res, {
     statusCode: 200,
     success: true,
     message: 'All users',
@@ -28,7 +28,7 @@ const updateProfileData = catchAsync(async (req, res) => {
   const user_id = typeof req.user.id === 'string' ? idConverter(req.user.id) : req.user.id;
   const payload = req.body
   const result= await userServices.updateProfileData(user_id,payload)
-  golbalRespnseHandler(res, {
+  sendResponse(res, {
     statusCode: 200,
     success: true,
     message: 'profile updated',
@@ -44,7 +44,7 @@ const deleteSingleUser = catchAsync(async (req, res) => {
     throw new Error ("user id conversiopn failed")
   }
   const result =await userServices.deleteSingleUser(userIdConverted);
-  golbalRespnseHandler(res, {
+  sendResponse(res, {
     statusCode: 200,
     success: true,
     message: 'user deleted',
@@ -60,7 +60,7 @@ const selfDistuct = catchAsync(async (req, res) => {
     throw new Error("user id conversion failed")
   }
   const result = await userServices.selfDistuct(userIdConverted)
-  golbalRespnseHandler(res, {
+  sendResponse(res, {
     statusCode: 200,
     success: true,
     message: 'your account deletation successfull',
@@ -87,7 +87,7 @@ const uploadOrChangeImg = catchAsync(async (req, res) => {
   const result = await userServices.uploadOrChangeImg(userIdConverted, imgFile as Express.Multer.File);
 
   // Send response
-  golbalRespnseHandler(res, {
+  sendResponse(res, {
     statusCode: 200,
     success: true,
     message: `Your profile picture has been ${actionType || "updated"}`,
@@ -104,7 +104,7 @@ const getProfile= catchAsync(async(req,res)=>{
   }
   const result = await userServices.getProfile(converted_user_id)
 
-  golbalRespnseHandler(res, {
+  sendResponse(res, {
     statusCode: 200,
     success: true,
     message:"your position retrived",

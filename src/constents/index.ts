@@ -5,8 +5,6 @@ export const userRole = {
   admin: 'admin',
 } as const;
 
-export type propertyStatus = 'forRent' | 'forSale';
-
 export type TErrorSource = {
   path: string | number;
   message: string;
