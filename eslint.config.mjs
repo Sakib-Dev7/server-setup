@@ -11,7 +11,11 @@ export default [
   {
     files: ["**/*.{js,mjs,cjs}"],
     languageOptions: {
-      globals: globals.browser,
+      // globals: globals.browser,
+      globals:{
+        ...globals.browser, 
+        ...globals.node
+      },
     },
     rules: {
       "no-unused-vars": "warn",
@@ -28,7 +32,11 @@ export default [
     files: ["**/*.ts"],
     languageOptions: {
       parser: tsParser,
-      globals: globals.browser,
+      // globals: globals.browser,
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+      }
     },
     plugins: { "@typescript-eslint": tseslint }, // Ensure correct plugin usage
     rules: {
@@ -37,6 +45,7 @@ export default [
       "no-unused-expressions": "error",
       "prefer-const": "error",
       "no-console": "warn",
+      "explicit-module-boundary-types": "off", // Example: Disable explicit return types rule
     },
   },
 ];

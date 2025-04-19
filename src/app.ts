@@ -2,7 +2,7 @@ import express from 'express';
 const app = express();
 import cors from 'cors';
 import globalErrorHandler from './middleware/globalErrorHandler';
-import routeNotFound from './middleware/routNotFound';
+import routeNotFound from './middleware/routeNotFound';
 import Routes from './routes';
 
 // middleWares
